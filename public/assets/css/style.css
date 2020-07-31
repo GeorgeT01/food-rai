@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'roboto';
+    src: url('../fonts/roboto-regular.ttf');
+}
+
+* {
+    font-family: 'roboto';
+}
+
+.bg-primary {
+    background-color: #0080FF !important;
+}
+
+.btn-primary {
+    background-color: #0080FF !important;
+}
+
+.card-center {
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+}
