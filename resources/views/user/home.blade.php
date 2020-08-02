@@ -1,4 +1,4 @@
-@extends('user.app')
+@extends('app')
 @section('title', 'Food Rai')
 
 @section('content')

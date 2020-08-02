@@ -24,7 +24,7 @@ class LoginController extends Controller
         ]);
         $remember = isset($request->remember) ? true : false;
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)){
-            return redirect('/');
+            return redirect()->route('home');
         }
         return back()->withInput($request->all())->with('error', 'Worng email or password');
     }

@@ -14,8 +14,8 @@
                 <a class="nav-link text-light" href="#">Link</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dropdown
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -28,25 +28,46 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
+            @if (!Auth::guard('store')->check())
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#"><i class="fas fa-store"></i> Create Store</a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#"><i class="fas fa-store"></i> My Store</a>
+                </li>
+            @endif
+            @if (Auth::guard('web')->check())
 
-            @if (Auth::check())
+            <li class="nav-item dropdown">
+                <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-bell"></i> <span class="badge badge-pill badge-warning">1</span>
+                </a>
+                <div class="dropdown-menu shadow-sm dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#"> Order Completed</a>
+                </div>
+            </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->fullName() }}
                     </a>
                     <div class="dropdown-menu shadow-sm dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">My Account</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-history"></i> Order History</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> Settings</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
+                        <a class="dropdown-item" href="{{ route('user.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </div>
                 </li>
             @else
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ url('register') }}"><i class="fas fa-user-plus"></i> Regiester</a>
+                    <a class="nav-link text-light" href="{{ route('user.register') }}"><i class="fas fa-user-plus"></i>
+                        Regiester</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ url('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a class="nav-link text-light" href="{{ route('user.login') }}"><i class="fas fa-sign-in-alt"></i>
+                        Login</a>
                 </li>
             @endif
 

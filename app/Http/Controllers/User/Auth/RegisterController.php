@@ -44,7 +44,7 @@ class RegisterController extends Controller
         
         if($user->save()){
             Auth::loginUsingId($user->id);
-            return redirect('/');
+            return redirect()->route('home');
         }
         return back()->withInput($request->all());
 

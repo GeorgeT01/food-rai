@@ -1,4 +1,4 @@
-<select name="city" id="city" class="form-control shadow-sm" @error('city') is-invalid @enderror>
+<select name="city" id="city" class="form-control form-control-lg border-10 shadow-sm" @error('city') is-invalid @enderror>
     <option value="Algeria">Algeria</option>
     <option value="Bahrain">Bahrain</option>
     <option value="Egypt">Egypt</option>

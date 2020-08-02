@@ -1,72 +1,58 @@
 @extends('app')
-@section('title', 'Register')
+@section('title', 'Store-Register')
 
 @section('content')
     <div class="container-fluid mt-5 mb-5">
         <div class="row">
-            <div class="col-md-5">
-                <img src="{{ asset('assets/illustrations/register.svg') }}" alt="register-image" width="100%" height="100%">
+            <div class="col-md-3">
             </div>
-            <div class="col-md-7">
-                <div class="row">
-                    <div class="col-md-1">
+            <div class="col-md-6">
 
-                    </div>
-                    <div class="col-md-10">
                         <div class="card shadow-sm border-10">
                             <div class="card-body">
-                                <h4 class="card-title text-center font-weight-bold">Create New Account</h4>
-                                <form action="{{ route('user.register.submit') }}" method="POST" class="mt-5" id="register-form">
+                                <h4 class="card-title text-center font-weight-bold"><i class="fas fa-store"></i> Create New Store</h4>
+                                <form action="{{ url('store/register') }}" method="POST" class="mt-5" id="register-form">
                                     @csrf
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="first_name"><i class="fas fa-user"></i> First Name<span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text"
-                                                    class="form-control form-control-lg border-10 shadow-sm @error('first_name') is-invalid @enderror"
-                                                    name="first_name" id="first_name" maxlength="255"
-                                                    value="{{ old('first_name') }}">
-                                                @error('first_name')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
+
+
+                                    <div class="form-group">
+                                        <label for="email"><i class="fas fa-store"></i> Store name<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text"
+                                            class="form-control form-control-lg border-10 shadow-sm @error('name') is-invalid @enderror"
+                                            name="name" id="name" maxlength="255" value="{{ old('name') }}">
+                                        @error('name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="last_name"><i class="fas fa-user"></i> Last Name<span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text"
-                                                    class="form-control form-control-lg border-10 shadow-sm @error('first_name') is-invalid @enderror"
-                                                    name="last_name" id="last_name" maxlength="255"
-                                                    value="{{ old('last_name') }}">
-                                                @error('last_name')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="middle_name"><i class="fas fa-user"></i> Middle Name <small
-                                                        class="text-info">optional</small></label>
-                                                <input type="text" class="form-control form-control-lg border-10 shadow-sm"
-                                                    name="middle_name" id="middle_name" maxlength="255"
-                                                    value="{{ old('middle_name') }}">
-                                            </div>
-                                        </div>
+                                        @enderror
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="email"><i class="fas fa-envelope"></i> E-Mail<span
+                                                class="text-danger">*</span></label>
+                                        <input type="email"
+                                            class="form-control form-control-lg border-10 shadow-sm @error('email') is-invalid @enderror"
+                                            name="email" id="email" maxlength="255" value="{{ old('email') }}">
+                                            <small class="form-text text-muted">Email used to login</small>
+                                        @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+
+                                    
+
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="email"><i class="fas fa-envelope"></i> E-Mail<span
-                                                        class="text-danger">*</span></label>
+                                                <label for="email"><i class="fas fa-envelope"></i> E-Mail <small
+                                                    class="text-info">optional</small></label>
                                                 <input type="email"
                                                     class="form-control form-control-lg border-10 shadow-sm @error('email') is-invalid @enderror"
                                                     name="email" id="email" maxlength="255" value="{{ old('email') }}">
+                                                    <small class="form-text text-muted">Email shwoing to users</small>
                                                 @error('email')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -80,6 +66,7 @@
                                                         class="text-info">optional</small></label>
                                                 <input type="text" class="form-control form-control-lg border-10 shadow-sm"
                                                     name="phone" id="phone" maxlength="255" value="{{ old('phone') }}">
+                                                    <small class="form-text text-muted">Phone number shwoing to users</small>
                                             </div>
                                         </div>
                                     </div>
@@ -154,23 +141,16 @@
                                         Create
                                     </button>
                                     <div class="text-center mt-3">
-                                        <a href="{{ route('user.login') }}">Already have an account? login here</a>
+                                        <a href="{{ url('store/login') }}">Already have a storet? login to your store here</a>
                                     </div>
                                 </form>
 
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-1">
+                    
 
-                    </div>
-                </div>
-
-
-
-
-
-
+            </div>
+            <div class="col-md-3">
             </div>
         </div>
     </div>
